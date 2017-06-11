@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="resultsReturned"
+            type="int" />
+    </data>
+    <LinearLayout style="@style/MatchParentLayout">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/property_list"
+            style="@style/MatchWidthLayout"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@+id/no_property_found"
+            style="@style/WrapContentLayout"
+            android:layout_gravity="center"
+            android:text="@string/no_property_found"/>
+    </LinearLayout>
+</layout>

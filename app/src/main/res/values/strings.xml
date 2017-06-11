@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Property List</string>
+    <bool name="has_two_panes">false</bool>
+    <string name="features" formatted="false">%1d bed, %2d bath, %3d car</string>
+
+    <string name="no_property_selected">Please select any property to view details.</string>
+    <string name="no_property_found">No property found. Please try again.</string>
+
 </resources>

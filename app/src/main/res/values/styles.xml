@@ -8,4 +8,132 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MatchParentLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="MatchWidthLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapContentLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="VerticalWrapLayout" parent="WrapContentLayout">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TopTitleTVStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="OuterLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="OuterVerticalLinearLayout" parent="MatchWidthLayout">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="OuterHorizontalLinearLayout" parent="MatchWidthLayout">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="ListItemVerticalLinearLayout" parent="OuterVerticalLinearLayout">
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/list_item_bg</item>
+    </style>
+
+    <style name="ImageViewContainer">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BottomItemViewContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TitleTVStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="IconIVStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="DescTVStyle" parent="WrapContentLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="DisplayPriceStyle" parent="WrapContentLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="DisplayableStyle" parent="WrapContentLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="FeaturesStyle" parent="WrapContentLayout">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="PropertyThumbStyle">
+        <item name="android:layout_width">@dimen/image_width</item>
+        <item name="android:layout_height">@dimen/image_height</item>
+    </style>
+
+    <style name="AgencyStyle">
+        <item name="android:layout_width">@dimen/agency_logo_width</item>
+        <item name="android:layout_height">@dimen/agency_logo_height</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="PropertyThumbLeftStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/image_height</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="PropertyThumbRightStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_height">@dimen/image_height</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
 </resources>

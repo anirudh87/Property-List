@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="property"
+            type="com.app.propertylist.datamodels.PropertyData" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/outercontainer"
+        style="@style/OuterLayout"
+        android:clickable="true"
+        android:padding="10dp"
+        android:tag="@{property}">
+
+        <ImageView
+            android:id="@+id/retinaimage"
+            style="@style/PropertyThumbStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:imageUrl="@{property.RetinaDisplayThumbUrl}" />
+
+        <LinearLayout
+            style="@style/OuterVerticalLinearLayout"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/retinaimage">
+
+            <TextView
+                style="@style/DisplayPriceStyle"
+                android:text="@{property.DisplayPrice.trim()}" />
+
+            <TextView
+                style="@style/FeaturesStyle"
+                android:text="@{String.format(@string/features, property.bedrooms, property.bathrooms, property.carspaces)}" />
+
+            <TextView
+                style="@style/DisplayableStyle"
+                android:text="@{property.DisplayableAddress}" />
+
+            <ImageView
+                style="@style/AgencyStyle"
+                app:imageUrl="@{property.AgencyLogoUrl}" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

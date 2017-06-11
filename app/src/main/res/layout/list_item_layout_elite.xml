@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="property"
+            type="com.app.propertylist.datamodels.PropertyData" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/outer_container_elite"
+        style="@style/ListItemVerticalLinearLayout"
+        android:clickable="true"
+        android:tag="@{property}">
+
+        <LinearLayout
+            style="@style/MatchWidthLayout">
+
+            <ImageView
+                style="@style/PropertyThumbLeftStyle"
+                app:imageUrl="@{property.RetinaDisplayThumbUrl}" />
+
+            <ImageView
+                style="@style/PropertyThumbRightStyle"
+                app:imageUrl="@{property.SecondRetinaDisplayThumbUrl}" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/DisplayPriceStyle"
+            android:text="@{property.DisplayPrice.trim()}" />
+
+        <TextView
+            style="@style/FeaturesStyle"
+            android:text="@{String.format(@string/features, property.bedrooms, property.bathrooms, property.carspaces)}" />
+
+        <TextView
+            style="@style/DisplayableStyle"
+            android:text="@{property.DisplayableAddress}" />
+
+        <ImageView
+            style="@style/AgencyStyle"
+            app:imageUrl="@{property.AgencyLogoUrl}" />
+    </LinearLayout>
+</layout>
