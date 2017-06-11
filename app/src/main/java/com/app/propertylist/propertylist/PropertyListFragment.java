@@ -51,7 +51,7 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
 
     @Override
     protected Lifecycle.ViewModel getViewModel() {
-        if(propertyListViewModel == null) {
+        if(Utility.isEmpty(propertyListViewModel)) {
             propertyListViewModel = new PropertyListViewModel(requestManager);
         }
         return propertyListViewModel;

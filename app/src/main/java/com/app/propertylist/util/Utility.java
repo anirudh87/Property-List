@@ -33,17 +33,11 @@ public class Utility {
         return list == null || list.length == 0;
     }
 
-    public static boolean isNotEmpty(Object onject) {
-        return !isEmpty(onject);
+    public static boolean isNotEmpty(Object object) {
+        return !isEmpty(object);
     }
 
     public static boolean isEmpty(Object object) {
         return object == null;
-    }
-
-    public static void showSnackBar(CoordinatorLayout coordinatorLayout, String message) {
-        Snackbar snackbar = Snackbar
-                .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-        snackbar.show();
     }
 }
