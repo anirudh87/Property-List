@@ -10,9 +10,5 @@ public interface PropertyService {
 
     @GET("mapsearch")
     Observable<PropertyListResponse> getPropertyList(@Query("mode") String mode, @Query("sub") String sub, @Query("pcodes") String pcodes, @Query("state") String state);
-
-    @GET("test")
-    Observable<PropertyListResponse> getProperty();
-
 }
 

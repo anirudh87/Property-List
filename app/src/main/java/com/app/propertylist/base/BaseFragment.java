@@ -6,9 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.app.propertylist.MainActivity;
+import com.app.propertylist.MyApplication;
 import com.app.propertylist.interfaces.FragmentHelper;
 import com.app.propertylist.network.PropertyService;
 import com.app.propertylist.network.RequestManager;
+
+import javax.inject.Inject;
 
 public abstract class BaseFragment extends Fragment implements Lifecycle.View {
 
@@ -16,13 +19,14 @@ public abstract class BaseFragment extends Fragment implements Lifecycle.View {
 
     protected abstract Lifecycle.ViewModel getViewModel();
 
-    protected PropertyService requestManager;
+    @Inject
+    protected RequestManager requestManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestManager = new RequestManager();
+        ((MyApplication) getActivity().getApplication()).getComponent().inject(this);
 
         if(getViewModel() != null) {
             getViewModel().onViewAttached(this);

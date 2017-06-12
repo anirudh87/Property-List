@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,13 +37,15 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setRetainInstance(true);
+
         SearchRequest request = new SearchRequest();
         request.setMode("buy");
         request.setSub("Bondi");
         request.setPcodes("2026");
         request.setState("NSW");
 
-        propertyListViewModel.loadProperties(this, request);
+        propertyListViewModel.loadProperties(request);
 
         propertyListAdapter = new PropertyListAdapter(PropertyListFragment.this);
     }
@@ -52,7 +53,7 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
     @Override
     protected Lifecycle.ViewModel getViewModel() {
         if(Utility.isEmpty(propertyListViewModel)) {
-            propertyListViewModel = new PropertyListViewModel(requestManager);
+            propertyListViewModel = new PropertyListViewModel(requestManager, this);
         }
         return propertyListViewModel;
     }
@@ -78,6 +79,7 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
 
     @Override
     public void onSuccess(List<PropertyData> propertyList) {
+
         if(Utility.isNotEmpty(propertyList)) {
             propertyListAdapter.addAll(propertyList);
             binding.propertyList.setVisibility(View.VISIBLE);
@@ -90,6 +92,7 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
         }
     }
 
+    //For double pane layout, Hide Details fragment if no property found in listing
     private void hideDetailsFragment() {
         if (getResources().getBoolean(R.bool.has_two_panes)) {
             fragmentHelper.hideDetailsView();

@@ -57,6 +57,7 @@
                     android:tag="@{property}"
                     android:src="@drawable/favorite"/>
             </RelativeLayout>
+
         </LinearLayout>
     </RelativeLayout>
 </layout>

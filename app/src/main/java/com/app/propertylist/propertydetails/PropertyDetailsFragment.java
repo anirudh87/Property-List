@@ -28,6 +28,7 @@ public class PropertyDetailsFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         Bundle bundle = getArguments();
         if (bundle != null) {
             property = bundle.getParcelable(Constants.PROPERTY);

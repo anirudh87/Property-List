@@ -18,6 +18,6 @@ public interface PropertyListContract {
 
     interface ViewModel extends Lifecycle.ViewModel {
 
-        void loadProperties(View view, SearchRequest request);
+        void loadProperties(SearchRequest request);
     }
 }

@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso;
 public class ImageViewBinding {
 
     @BindingAdapter("imageUrl")
-    public static void loadImage(ImageView imageView, Object imageUrl) {
-        Picasso.with(imageView.getContext()).load((String) imageUrl).placeholder(R.drawable.no_image).into(imageView);
+    public static void getImageUrl(ImageView imageView, String imageUrl) {
+        Picasso.with(imageView.getContext()).load(imageUrl).placeholder(R.drawable.no_image).into(imageView);
     }
 }

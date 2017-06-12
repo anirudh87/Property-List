@@ -24,8 +24,9 @@ public class PropertyListViewModel extends BaseObservable implements PropertyLis
     private PropertyService propertyService;
     private PropertyListObserver disposableObserver;
 
-    public PropertyListViewModel(PropertyService propertyService) {
+    public PropertyListViewModel(PropertyService propertyService, PropertyListContract.View viewCallback) {
         this.propertyService = propertyService;
+        this.viewCallback = viewCallback;
     }
 
     @Bindable
@@ -39,9 +40,9 @@ public class PropertyListViewModel extends BaseObservable implements PropertyLis
     }
 
     @Override
-    public void loadProperties(final PropertyListContract.View view, SearchRequest request) {
-        disposableObserver = new PropertyListObserver(view);
-        view.showLoading();
+    public void loadProperties(SearchRequest request) {
+        disposableObserver = new PropertyListObserver(viewCallback);
+        viewCallback.showLoading();
         propertyService.getPropertyList(request.getMode(), request.getSub(), request.getPcodes(), request.getState()).observeOn(AndroidSchedulers.mainThread()).
                 subscribeOn(Schedulers.io()).subscribe(disposableObserver);
     }

@@ -9,6 +9,7 @@
         <variable
             name="property"
             type="com.app.propertylist.datamodels.PropertyData" />
+
     </data>
 
 

@@ -1,6 +1,7 @@
 package com.app.propertylist;
 
 import android.databinding.DataBindingUtil;
+import android.os.PersistableBundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,10 +13,12 @@ import com.app.propertylist.databinding.ActivityMainBinding;
 import com.app.propertylist.interfaces.FragmentHelper;
 import com.app.propertylist.propertydetails.PropertyDetailsFragment;
 import com.app.propertylist.propertylist.PropertyListFragment;
+import com.app.propertylist.util.Constants;
 
 public class MainActivity extends AppCompatActivity implements FragmentHelper {
 
     ActivityMainBinding binding;
+    private boolean isFragmentAdded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,20 +27,23 @@ public class MainActivity extends AppCompatActivity implements FragmentHelper {
 
         binding.toolbar.setTitle(getString(R.string.app_name));
 
-        //Check if device is Portrait/Landscape/Tablet
-        if (!getResources().getBoolean(R.bool.has_two_panes)) {
-            PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
+        //Check if device is Phone/Tablet
+        if (savedInstanceState == null) {
+            if (!getResources().getBoolean(R.bool.has_two_panes)) {
+                PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
 
-            // Load first fragment into Activity
-            loadFragment(R.id.main_container, propertyListFragment, PropertyListFragment.class.getSimpleName());
-        }
-        else {
-            PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
-            PropertyDetailsFragment propertyDetailsFragment = PropertyDetailsFragment.newInstance(null);
+                // Load first fragment into Activity
+                loadFragment(R.id.main_container, propertyListFragment, PropertyListFragment.class.getSimpleName());
+                isFragmentAdded = true;
 
-            // Load both fragments into Activity
-            loadFragment(R.id.property_list_fragment, propertyListFragment, PropertyListFragment.class.getSimpleName());
-            loadFragment(R.id.property_details_fragment, propertyDetailsFragment, PropertyDetailsFragment.class.getSimpleName());
+            } else {
+                PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
+                PropertyDetailsFragment propertyDetailsFragment = PropertyDetailsFragment.newInstance(null);
+
+                // Load both fragments into Activity in tablets
+                loadFragment(R.id.property_list_fragment, propertyListFragment, PropertyListFragment.class.getSimpleName());
+                loadFragment(R.id.property_details_fragment, propertyDetailsFragment, PropertyDetailsFragment.class.getSimpleName());
+            }
         }
     }
 
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements FragmentHelper {
 
     @Override
     public void showDetails(Bundle bundle) {
+        //Load details screen
         if (getResources().getBoolean(R.bool.has_two_panes)) {
             PropertyDetailsFragment propertyDetailsFragment = (PropertyDetailsFragment) getSupportFragmentManager().findFragmentByTag(PropertyDetailsFragment.class.getSimpleName());
             propertyDetailsFragment.setPropertyData(bundle);
@@ -65,6 +72,12 @@ public class MainActivity extends AppCompatActivity implements FragmentHelper {
     @Override
     public void hideDetailsView() {
         binding.propertyDetailsFragment.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        outState.putBoolean(Constants.IS_FRAGMENT_ADDED, isFragmentAdded);
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     @Override

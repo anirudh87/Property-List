@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="property"
             type="com.app.propertylist.datamodels.PropertyData" />
@@ -16,7 +15,8 @@
         android:clickable="true"
         android:tag="@{property}">
 
-        <LinearLayout style="@style/MatchWidthLayout">
+        <LinearLayout
+            style="@style/MatchWidthLayout">
 
             <ImageView
                 style="@style/PropertyThumbLeftStyle"
@@ -53,5 +53,6 @@
                 android:tag="@{property}"
                 android:src="@drawable/favorite"/>
         </RelativeLayout>
+
     </LinearLayout>
 </layout>
