@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.app.propertylist.databinding.ActivityMainBinding;
 import com.app.propertylist.interfaces.FragmentHelper;
+import com.app.propertylist.propertydetails.PropertyDetailsFragment;
 import com.app.propertylist.propertylist.PropertyListFragment;
 
 public class MainActivity extends AppCompatActivity implements FragmentHelper {
@@ -21,10 +22,23 @@ public class MainActivity extends AppCompatActivity implements FragmentHelper {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
+        binding.toolbar.setTitle(getString(R.string.app_name));
 
-        // Load first fragment into Activity
-        loadFragment(R.id.main_container, propertyListFragment, PropertyListFragment.class.getSimpleName());
+        //Check if device is Portrait/Landscape/Tablet
+        if (!getResources().getBoolean(R.bool.has_two_panes)) {
+            PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
+
+            // Load first fragment into Activity
+            loadFragment(R.id.main_container, propertyListFragment, PropertyListFragment.class.getSimpleName());
+        }
+        else {
+            PropertyListFragment propertyListFragment = PropertyListFragment.newInstance();
+            PropertyDetailsFragment propertyDetailsFragment = PropertyDetailsFragment.newInstance(null);
+
+            // Load both fragments into Activity
+            loadFragment(R.id.property_list_fragment, propertyListFragment, PropertyListFragment.class.getSimpleName());
+            loadFragment(R.id.property_details_fragment, propertyDetailsFragment, PropertyDetailsFragment.class.getSimpleName());
+        }
     }
 
     private void loadFragment(int container, Fragment fragment, String fragmentTag) {
@@ -35,6 +49,22 @@ public class MainActivity extends AppCompatActivity implements FragmentHelper {
     @Override
     public CoordinatorLayout getContentMain() {
         return binding.outerLayout;
+    }
+
+    @Override
+    public void showDetails(Bundle bundle) {
+        if (getResources().getBoolean(R.bool.has_two_panes)) {
+            PropertyDetailsFragment propertyDetailsFragment = (PropertyDetailsFragment) getSupportFragmentManager().findFragmentByTag(PropertyDetailsFragment.class.getSimpleName());
+            propertyDetailsFragment.setPropertyData(bundle);
+        } else {
+            PropertyDetailsFragment propertyDetails = PropertyDetailsFragment.newInstance(bundle);
+            loadFragment(R.id.main_container, propertyDetails, PropertyDetailsFragment.class.getSimpleName());
+        }
+    }
+
+    @Override
+    public void hideDetailsView() {
+        binding.propertyDetailsFragment.setVisibility(View.GONE);
     }
 
     @Override

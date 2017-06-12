@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,13 +17,12 @@ import com.app.propertylist.base.Lifecycle;
 import com.app.propertylist.databinding.FragmentPropertylistBinding;
 import com.app.propertylist.datamodels.PropertyData;
 import com.app.propertylist.datamodels.SearchRequest;
-import com.app.propertylist.interfaces.OnItemClickListener;
 import com.app.propertylist.util.SimpleDividerItem;
 import com.app.propertylist.util.Utility;
 
 import java.util.List;
 
-public class PropertyListFragment extends BaseFragment implements PropertyListContract.View, OnItemClickListener {
+public class PropertyListFragment extends BaseFragment implements PropertyListContract.View, IPropertyListFragment {
 
     FragmentPropertylistBinding binding;
     PropertyListContract.ViewModel propertyListViewModel;
@@ -46,7 +46,7 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
 
         propertyListViewModel.loadProperties(this, request);
 
-        propertyListAdapter = new PropertyListAdapter(getContext(), PropertyListFragment.this);
+        propertyListAdapter = new PropertyListAdapter(PropertyListFragment.this);
     }
 
     @Override
@@ -86,17 +86,25 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
         else {
             binding.propertyList.setVisibility(View.GONE);
             binding.noPropertyFound.setVisibility(View.VISIBLE);
+            hideDetailsFragment();
+        }
+    }
+
+    private void hideDetailsFragment() {
+        if (getResources().getBoolean(R.bool.has_two_panes)) {
+            fragmentHelper.hideDetailsView();
         }
     }
 
     @Override
     public void onFailure(Throwable e) {
-        Log.e("Data", "> "+e.getMessage());
+        hideDetailsFragment();
+        Utility.showSnackBar(fragmentHelper.getContentMain(), getString(R.string.msg_no_property_found));
     }
 
     @Override
     public void onComplete() {
-
+        //TODO : Add any functionality on List loading completion
     }
 
     @Override
@@ -123,6 +131,12 @@ public class PropertyListFragment extends BaseFragment implements PropertyListCo
     }
 
     @Override
-    public void OnClick(Bundle data) {
+    public CoordinatorLayout getContentMain() {
+        return fragmentHelper.getContentMain();
+    }
+
+    @Override
+    public void OnListItemClick(Bundle data) {
+        fragmentHelper.showDetails(data);
     }
 }

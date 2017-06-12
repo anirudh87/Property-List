@@ -40,4 +40,10 @@ public class Utility {
     public static boolean isEmpty(Object object) {
         return object == null;
     }
+
+    public static void showSnackBar(CoordinatorLayout coordinatorLayout, String message) {
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
 }

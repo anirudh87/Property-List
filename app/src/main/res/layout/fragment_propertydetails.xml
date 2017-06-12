@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="property"
+            type="com.app.propertylist.datamodels.PropertyData" />
+    </data>
+
+
+    <RelativeLayout style="@style/MatchParentLayout">
+
+        <android.support.v4.widget.NestedScrollView style="@style/MatchParentLayout">
+
+            <LinearLayout
+                style="@style/MatchParentLayout"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="@{property != null ? View.VISIBLE : View.INVISIBLE}">
+
+                <ImageView
+                    android:id="@+id/retinaimage"
+                    style="@style/PropertyThumbStyle"
+                    app:imageUrl="@{property.RetinaDisplayThumbUrl}" />
+
+                <LinearLayout
+                    style="@style/OuterVerticalLinearLayout"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        style="@style/DisplayPriceStyle"
+                        android:text="@{property.DisplayPrice.trim()}" />
+
+                    <TextView
+                        style="@style/FeaturesStyle"
+                        android:text="@{String.format(@string/features, property.bedrooms, property.bathrooms, property.carspaces)}" />
+
+                    <TextView
+                        style="@style/DisplayableStyle"
+                        android:text="@{property.DisplayableAddress}" />
+
+                    <ImageView
+                        style="@style/AgencyStyle"
+                        app:imageUrl="@{property.AgencyLogoUrl}" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            style="@style/MatchParentLayout"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{property != null ? View.GONE : View.VISIBLE}">
+
+            <TextView
+                style="@style/WrapContentLayout"
+                android:text="@string/msg_no_property_selected" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

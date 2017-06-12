@@ -3,7 +3,8 @@
     <bool name="has_two_panes">false</bool>
     <string name="features" formatted="false">%1d bed, %2d bath, %3d car</string>
 
-    <string name="no_property_selected">Please select any property to view details.</string>
-    <string name="no_property_found">No property found. Please try again.</string>
-
+    <string name="msg_no_property_selected">Please select any property to view details.</string>
+    <string name="msg_no_property_found">No property found. Please try again.</string>
+    <string name="msg_property_added_in_fav">Property has been added in your favorites.</string>
+    <string name="msg_property_removed_from_fav">Property has been removed your favorites.</string>
 </resources>

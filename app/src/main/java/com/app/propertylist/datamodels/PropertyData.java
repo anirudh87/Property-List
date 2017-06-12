@@ -3,62 +3,83 @@ package com.app.propertylist.datamodels;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class PropertyData implements Parcelable {
 
-    public int AdId;
+    @SerializedName("AdId")
+    public int adId;
 
-    public String AgencyColor;
+    @SerializedName("AgencyColor")
+    public String agencyColor;
 
-    public String AgencyContactPhoto;
+    @SerializedName("AgencyContactPhoto")
+    public String agencyContactPhoto;
 
-    public String AgencyLogoUrl;
+    @SerializedName("AgencyLogoUrl")
+    public String agencyLogoUrl;
 
-    public int AgencyId;
+    @SerializedName("AgencyId")
+    public int agencyId;
 
-    public String Area;
+    @SerializedName("Area")
+    public String area;
 
-    public int Bathrooms;
+    @SerializedName("Bathrooms")
+    public int bathrooms;
 
-    public int Bedrooms;
+    @SerializedName("Bedrooms")
+    public int bedrooms;
 
-    public int Carspaces;
+    @SerializedName("Carspaces")
+    public int carspaces;
 
-    public List<String> ImageUrls;
+    @SerializedName("ImageUrls")
+    public List<String> imageUrls;
 
-    public int IsElite;
+    @SerializedName("IsElite")
+    public int isElite;
 
-    public String DisplayableAddress;
+    @SerializedName("DisplayableAddress")
+    public String displayableAddress;
 
-    public String DisplayPrice;
+    @SerializedName("DisplayPrice")
+    public String displayPrice;
 
-    public String ListingType;
+    @SerializedName("ListingType")
+    public String listingType;
 
-    public String TruncatedDescription;
+    @SerializedName("TruncatedDescription")
+    public String truncatedDescription;
 
-    public String RetinaDisplayThumbUrl;
+    @SerializedName("RetinaDisplayThumbUrl")
+    public String retinaDisplayThumbUrl;
 
-    public String SecondRetinaDisplayThumbUrl;
+    @SerializedName("SecondRetinaDisplayThumbUrl")
+    public String secondRetinaDisplayThumbUrl;
+
+    public boolean isFavorite;
 
     private PropertyData(Parcel in) {
-        AdId = in.readInt();
-        AgencyColor = in.readString();
-        AgencyContactPhoto = in.readString();
-        AgencyLogoUrl = in.readString();
-        AgencyId = in.readInt();
-        Area = in.readString();
-        Bathrooms = in.readInt();
-        Bedrooms = in.readInt();
-        Carspaces = in.readInt();
-        ImageUrls = in.createStringArrayList();
-        IsElite = in.readInt();
-        DisplayableAddress = in.readString();
-        DisplayPrice = in.readString();
-        ListingType = in.readString();
-        TruncatedDescription = in.readString();
-        RetinaDisplayThumbUrl = in.readString();
-        SecondRetinaDisplayThumbUrl = in.readString();
+        adId = in.readInt();
+        agencyColor = in.readString();
+        agencyContactPhoto = in.readString();
+        agencyLogoUrl = in.readString();
+        agencyId = in.readInt();
+        area = in.readString();
+        bathrooms = in.readInt();
+        bedrooms = in.readInt();
+        carspaces = in.readInt();
+        imageUrls = in.createStringArrayList();
+        isElite = in.readInt();
+        displayableAddress = in.readString();
+        displayPrice = in.readString();
+        listingType = in.readString();
+        truncatedDescription = in.readString();
+        retinaDisplayThumbUrl = in.readString();
+        secondRetinaDisplayThumbUrl = in.readString();
     }
 
     public PropertyData() {
@@ -77,140 +98,148 @@ public class PropertyData implements Parcelable {
         }
     };
 
-    public String getAgencyLogoUrl() {
-        return AgencyLogoUrl;
-    }
-
-    public void setAgencyLogoUrl(String agencyLogoUrl) {
-        AgencyLogoUrl = agencyLogoUrl;
-    }
-
-    public int getCarspaces() {
-        return Carspaces;
-    }
-
-    public void setCarspaces(int carspaces) {
-        Carspaces = carspaces;
-    }
-
-    public String getTruncatedDescription() {
-        return TruncatedDescription;
-    }
-
-    public void setTruncatedDescription(String truncatedDescription) {
-        TruncatedDescription = truncatedDescription;
-    }
-
-    public String getRetinaDisplayThumbUrl() {
-        return RetinaDisplayThumbUrl;
-    }
-
-    public void setRetinaDisplayThumbUrl(String retinaDisplayThumbUrl) {
-        RetinaDisplayThumbUrl = retinaDisplayThumbUrl;
-    }
-
-    public String getSecondRetinaDisplayThumbUrl() {
-        return SecondRetinaDisplayThumbUrl;
-    }
-
-    public void setSecondRetinaDisplayThumbUrl(String secondRetinaDisplayThumbUrl) {
-        SecondRetinaDisplayThumbUrl = secondRetinaDisplayThumbUrl;
-    }
-
-    public String getDisplayPrice() {
-        return DisplayPrice;
-    }
-
-    public void setDisplayPrice(String displayPrice) {
-        DisplayPrice = displayPrice;
-    }
-
-    public String getListingType() {
-        return ListingType;
-    }
-
-    public void setListingType(String listingType) {
-        ListingType = listingType;
-    }
-
-    public String getDisplayableAddress() {
-        return DisplayableAddress;
-    }
-
-    public void setDisplayableAddress(String displayableAddress) {
-        DisplayableAddress = displayableAddress;
-    }
-
-    public int getIsElite() {
-        return IsElite;
-    }
-
-    public void setIsElite(int IsElite) {
-        this.IsElite = IsElite;
-    }
-
     public int getAdId() {
-        return AdId;
+        return adId;
     }
 
     public void setAdId(int adId) {
-        AdId = adId;
+        this.adId = adId;
     }
 
     public String getAgencyColor() {
-        return AgencyColor;
+        return agencyColor;
     }
 
     public void setAgencyColor(String agencyColor) {
-        AgencyColor = agencyColor;
+        this.agencyColor = agencyColor;
     }
 
     public String getAgencyContactPhoto() {
-        return AgencyContactPhoto;
+        return agencyContactPhoto;
     }
 
     public void setAgencyContactPhoto(String agencyContactPhoto) {
-        AgencyContactPhoto = agencyContactPhoto;
+        this.agencyContactPhoto = agencyContactPhoto;
+    }
+
+    public String getAgencyLogoUrl() {
+        return agencyLogoUrl;
+    }
+
+    public void setAgencyLogoUrl(String agencyLogoUrl) {
+        this.agencyLogoUrl = agencyLogoUrl;
     }
 
     public int getAgencyId() {
-        return AgencyId;
+        return agencyId;
     }
 
     public void setAgencyId(int agencyId) {
-        AgencyId = agencyId;
+        this.agencyId = agencyId;
     }
 
     public String getArea() {
-        return Area;
+        return area;
     }
 
     public void setArea(String area) {
-        Area = area;
+        this.area = area;
     }
 
     public int getBathrooms() {
-        return Bathrooms;
+        return bathrooms;
     }
 
     public void setBathrooms(int bathrooms) {
-        Bathrooms = bathrooms;
+        this.bathrooms = bathrooms;
     }
 
     public int getBedrooms() {
-        return Bedrooms;
+        return bedrooms;
     }
 
     public void setBedrooms(int bedrooms) {
-        Bedrooms = bedrooms;
+        this.bedrooms = bedrooms;
+    }
+
+    public int getCarspaces() {
+        return carspaces;
+    }
+
+    public void setCarspaces(int carspaces) {
+        this.carspaces = carspaces;
     }
 
     public List<String> getImageUrls() {
-        return ImageUrls;
+        return imageUrls;
     }
 
     public void setImageUrls(List<String> imageUrls) {
-        ImageUrls = imageUrls;
+        this.imageUrls = imageUrls;
+    }
+
+    public int getIsElite() {
+        return isElite;
+    }
+
+    public void setIsElite(int isElite) {
+        this.isElite = isElite;
+    }
+
+    public String getDisplayableAddress() {
+        return displayableAddress;
+    }
+
+    public void setDisplayableAddress(String displayableAddress) {
+        this.displayableAddress = displayableAddress;
+    }
+
+    public String getDisplayPrice() {
+        return displayPrice;
+    }
+
+    public void setDisplayPrice(String displayPrice) {
+        this.displayPrice = displayPrice;
+    }
+
+    public String getListingType() {
+        return listingType;
+    }
+
+    public void setListingType(String listingType) {
+        this.listingType = listingType;
+    }
+
+    public String getTruncatedDescription() {
+        return truncatedDescription;
+    }
+
+    public void setTruncatedDescription(String truncatedDescription) {
+        this.truncatedDescription = truncatedDescription;
+    }
+
+    public String getRetinaDisplayThumbUrl() {
+        return retinaDisplayThumbUrl;
+    }
+
+    public void setRetinaDisplayThumbUrl(String retinaDisplayThumbUrl) {
+        this.retinaDisplayThumbUrl = retinaDisplayThumbUrl;
+    }
+
+    public String getSecondRetinaDisplayThumbUrl() {
+        return secondRetinaDisplayThumbUrl;
+    }
+
+    public void setSecondRetinaDisplayThumbUrl(String secondRetinaDisplayThumbUrl) {
+        this.secondRetinaDisplayThumbUrl = secondRetinaDisplayThumbUrl;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     @Override

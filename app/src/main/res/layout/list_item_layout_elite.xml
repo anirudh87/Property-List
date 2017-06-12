@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="property"
             type="com.app.propertylist.datamodels.PropertyData" />
@@ -15,8 +16,7 @@
         android:clickable="true"
         android:tag="@{property}">
 
-        <LinearLayout
-            style="@style/MatchWidthLayout">
+        <LinearLayout style="@style/MatchWidthLayout">
 
             <ImageView
                 style="@style/PropertyThumbLeftStyle"
@@ -39,8 +39,19 @@
             style="@style/DisplayableStyle"
             android:text="@{property.DisplayableAddress}" />
 
-        <ImageView
-            style="@style/AgencyStyle"
-            app:imageUrl="@{property.AgencyLogoUrl}" />
+        <RelativeLayout style="@style/MatchWidthLayout">
+
+            <ImageView
+                style="@style/AgencyStyle"
+                app:imageUrl="@{property.AgencyLogoUrl}" />
+
+            <ImageView
+                android:id="@+id/favorite_icon"
+                style="@style/WrapContentLayout"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:tag="@{property}"
+                android:src="@drawable/favorite"/>
+        </RelativeLayout>
     </LinearLayout>
 </layout>

@@ -17,6 +17,6 @@
             android:id="@+id/no_property_found"
             style="@style/WrapContentLayout"
             android:layout_gravity="center"
-            android:text="@string/no_property_found"/>
+            android:text="@string/msg_no_property_found"/>
     </LinearLayout>
 </layout>
