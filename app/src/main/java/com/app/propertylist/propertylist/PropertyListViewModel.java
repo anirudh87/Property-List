@@ -79,9 +79,11 @@ public class PropertyListViewModel extends BaseObservable implements PropertyLis
         @Override
         public void onNext(PropertyListResponse propertyListResponse) {
             viewCallback.hideLoading();
-            List<PropertyData> propertyDataList = propertyListResponse.getListingResults().getListings();
-            setPropertyList(propertyDataList);
-            viewCallback.onSuccess(propertyDataList);
+            if (propertyListResponse.getListingResults() != null) {
+                List<PropertyData> propertyDataList = propertyListResponse.getListingResults().getListings();
+                setPropertyList(propertyDataList);
+                viewCallback.onSuccess(propertyDataList);
+            }
         }
     }
 }
